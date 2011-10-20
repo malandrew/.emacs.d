@@ -117,4 +117,7 @@
 ;; Paste URLs as HTML links
 (global-set-key (kbd "C-c C-l") 'linkify-from-kill-ring)
 
+;; Escape markup formatted as a string
+(global-set-key (kbd "C-c h") 'html-from-console-string)
+
 (provide 'key-bindings)

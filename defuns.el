@@ -287,4 +287,16 @@ Both PATTERN and CONTENTS are matched as regular expressions."
     (yank)
     (insert (concat "\">" text "</a>"))))
 
+(defun html-from-console-string (start end)
+  "Turn a string output from e.g. a test runner into unescaped markup."
+  (interactive "r")
+  (query-replace-all "\\\"" "\"" start end)
+  (query-replace-all "\\n" "\n" start end))
+
+(defun query-replace-all (from-string to-string start end)
+  (save-excursion
+    (goto-char start)
+    (while (search-forward from-string end t)
+      (replace-match to-string))))
+
 (provide 'defuns)
