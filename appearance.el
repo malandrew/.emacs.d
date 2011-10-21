@@ -15,7 +15,7 @@
 
 ;; Highlight current line
 (global-hl-line-mode 1)
- 
+
 ;; Customize background color of lighlighted line
 (set-face-background 'hl-line "#222222")
 
@@ -48,7 +48,7 @@
 
 ;; Scrollbars to the right
 ;;(setq scroll-bar-mode-explicit t)
-;;(set-scroll-bar-mode `right) 
+;;(set-scroll-bar-mode `right)
 
 ;; Ditch them scrollbars
 (scroll-bar-mode -1)
