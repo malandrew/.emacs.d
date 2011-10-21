@@ -23,6 +23,10 @@
 ;; SVG
 (add-to-list 'auto-mode-alist '("\\.svg$" . image-mode))
 
+;; Puppet
+(autoload 'puppet-mode "puppet-mode")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js$" . javascript-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
