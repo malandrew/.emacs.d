@@ -1,6 +1,9 @@
 ;; Completion that uses many different methods to find options.
 (global-set-key (kbd "C-.") 'hippie-expand)
 
+;; Repeat last command - too cumbersome with C-x z
+(global-set-key (kbd "M-z") 'repeat)
+
 ;; Perform general cleanup.
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
 
