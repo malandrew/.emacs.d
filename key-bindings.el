@@ -1,5 +1,4 @@
 ;; Completion that uses many different methods to find options.
-(global-set-key (kbd "C-|") 'hippie-expand)
 (global-set-key (kbd "C-.") 'hippie-expand)
 
 ;; Perform general cleanup.
@@ -145,5 +144,8 @@
 
 ;; Toggle position
 (global-set-key (kbd "C-c C-s") 'toggle-buffer-pos)
+
+;; Touch buffer file
+(global-set-key (kbd "C-x t") 'touch-buffer-file)
 
 (provide 'key-bindings)
