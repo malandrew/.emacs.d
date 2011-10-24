@@ -142,6 +142,8 @@
 (require 'package)
 (require 'package-config)
 (require 'mode-mappings)
+(require 'recall-position)
+(require 'iy-go-to-char)
 (require 'key-bindings)
 (put 'downcase-region 'disabled nil)
 
@@ -165,10 +167,6 @@
 ;; (autoload 'yahtzee "yahtzee" nil t)
 ;; (autoload 'yahtzee-mode "yahtzee" nil t)
 ;; (add-to-list 'auto-mode-alist '("\\.yz\\'" . yahtzee-mode))
-
-;; Recall position
-(require 'recall-position)
-(global-set-key (kbd "C-c C-s") 'toggle-buffer-pos)
 
 ;; Eval lines (Ruby only)
 ;; (require 'eval-lines)
