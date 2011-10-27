@@ -52,11 +52,6 @@
 
 ;; (setq make-backup-files nil)
 
-;; Autopair parens
-(require 'autopair)
-(autopair-global-mode) ;; to enable in all buffers
-(setq autopair-blink nil) ;; no no no! NO BLINKING! NOOO!
-
 ;; Interactively Do Things
 (require 'ido)
 
@@ -150,6 +145,12 @@
 (require 'recall-position)
 (require 'iy-go-to-char)
 (require 'key-bindings)
+
+;; Autopair parens
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
+(setq autopair-blink nil) ;; no no no! NO BLINKING! NOOO!
+
 (put 'downcase-region 'disabled nil)
 
 ;; EMMS :)
