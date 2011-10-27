@@ -52,6 +52,11 @@
 
 ;; (setq make-backup-files nil)
 
+;; Autopair parens
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
+(setq autopair-blink nil) ;; no no no! NO BLINKING! NOOO!
+
 ;; Interactively Do Things
 (require 'ido)
 
