@@ -47,7 +47,7 @@
 ;; Buster.JS
 (autoload 'buster-mode "buster-mode")
 (setq buster-node-executable "/home/christian/local/bin/node")
-(add-file-find-hook-with-pattern "test\\.js$" (lambda () (buster-mode)) "require(\\(\"\\|'\\)buster")
+(add-find-file-hook-with-pattern "test\\.js$" (lambda () (buster-mode)) "require(\\(\"\\|'\\)buster")
 
 ;; Markdown
 ;;(require 'showoff-mode)

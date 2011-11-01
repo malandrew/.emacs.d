@@ -169,7 +169,7 @@ Symbols matching the text at point are put first in the completion list."
       (insert (concat "\n" line))))
   (next-line))
 
-(defun add-file-find-hook-with-pattern (pattern fn &optional contents)
+(defun add-find-file-hook-with-pattern (pattern fn &optional contents)
   "Add a find-file-hook that calls FN for files where PATTERN
 matches the file name, and optionally, where CONTENT matches file contents.
 Both PATTERN and CONTENTS are matched as regular expressions."
