@@ -10,11 +10,6 @@
 ;; Turn on the menu bar for exploring new modes
 (global-set-key (kbd "C-<f10>") 'menu-bar-mode)
 
-;; Use shell-like backspace C-h, rebind help to F1
-(global-set-key (kbd "C-h") 'backward-delete-char-untabify)
-(define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
-(global-set-key (kbd "<f1>") 'help-command)
-
 ;; Use C-w for backward-kill-word if no active region
 (global-set-key (kbd "C-w") 'kill-region-or-backward-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
