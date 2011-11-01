@@ -1,0 +1,6 @@
+* Wishlist [0/5]
+** TODO Expand/contract object literal
+** TODO Duplicate region
+** TODO Jump to test/jump to implementation
+** TODO (buster-mode) Duplicate test
+** TODO Wrap region i en snippet
