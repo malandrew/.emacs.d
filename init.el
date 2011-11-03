@@ -150,6 +150,7 @@
 (require 'mode-mappings)
 (require 'recall-position)
 (require 'iy-go-to-char)
+(require 'magit)
 (require 'key-bindings)
 
 ;; Autopair parens
