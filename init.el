@@ -161,6 +161,10 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+;; Save cursor position
+(require 'saveplace)
+(setq-default save-place t)
+
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)
 
