@@ -141,7 +141,6 @@
 
 ;; Additional configuration
 (require 'defuns)
-(require 'appearance)
 (require 'file-defuns)
 (require 'smooth-scrolling)
 (require 'autoinsert-templates)
@@ -156,6 +155,7 @@
 (require 'magit)
 (require 'expand-region)
 (require 'key-bindings)
+(require 'appearance)
 
 ;; No dropdowns please, yas
 (setq yas/prompt-functions '(yas/ido-prompt
