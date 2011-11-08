@@ -151,6 +151,7 @@
 (require 'recall-position)
 (require 'iy-go-to-char)
 (require 'magit)
+(require 'expand-region)
 (require 'key-bindings)
 
 (put 'downcase-region 'disabled nil)
