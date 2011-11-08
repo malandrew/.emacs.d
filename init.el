@@ -5,6 +5,9 @@
 ;; Don't break lines for me, please
 (setq truncate-lines 0)
 
+;; Remove selected region if typing
+(pending-delete-mode t)
+
 ;; Always display line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -131,7 +134,6 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yaml-mode")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/emms/lisp")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/recall-position")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/magit")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/oppdrag-mode")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/buster-mode")
@@ -140,6 +142,7 @@
 ;; Additional configuration
 (require 'defuns)
 (require 'appearance)
+(require 'file-defuns)
 (require 'smooth-scrolling)
 (require 'autoinsert-templates)
 (require 'git-walk)
@@ -151,8 +154,22 @@
 (require 'recall-position)
 (require 'iy-go-to-char)
 (require 'magit)
+(require 'expand-region)
 (require 'key-bindings)
 
+;; No dropdowns please, yas
+(setq yas/prompt-functions '(yas/ido-prompt
+                             yas/completing-prompt))
+
+;; Add parts of each file's directory to the buffer name if not unique
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+;; Save cursor position
+(require 'saveplace)
+(setq-default save-place t)
+
+;; Run at full power please
 (put 'downcase-region 'disabled nil)
 
 ;; EMMS :)

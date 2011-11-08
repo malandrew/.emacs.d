@@ -158,16 +158,31 @@ Symbols matching the text at point are put first in the completion list."
     (indent-for-tab-command))
   (indent-for-tab-command))
 
-(defun duplicate-line ()
-  (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (let ((line (buffer-substring
-                 (point)
-                 (progn (end-of-line) (point)))))
-      (end-of-line)
-      (insert (concat "\n" line))))
-  (next-line))
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated."
+  (interactive "p")
+  (if (region-active-p)
+      (duplicate-region arg)
+    (duplicate-current-line arg)))
+
+(defun duplicate-region (num &optional start end)
+  "Duplicates the region bounded by START and END NUM times.
+If no START and END is provided, the current region-beginning
+and region-end is used."
+  (interactive "p")
+  (let* ((start (or start (region-beginning)))
+         (end (or end (region-end)))
+         (region (buffer-substring start end)))
+    (goto-char end)
+    (dotimes (i num)
+      (insert region))))
+
+(defun duplicate-current-line (num)
+  "Duplicate the current line NUM times."
+  (interactive "p")
+  (duplicate-region num (point-at-bol) (1+ (point-at-eol)))
+  (goto-char (1- (point))))
 
 (defun add-find-file-hook-with-pattern (pattern fn &optional contents)
   "Add a find-file-hook that calls FN for files where PATTERN
@@ -250,8 +265,7 @@ Both PATTERN and CONTENTS are matched as regular expressions."
 (defun current-quotes-char ()
   (nth 3 (syntax-ppss)))
 
-(defun point-is-in-string-p ()
-  (current-quotes-char))
+(defalias 'point-is-in-string-p 'current-quotes-char)
 
 (defun move-point-forward-out-of-string ()
   (while (point-is-in-string-p) (forward-char)))
@@ -281,18 +295,6 @@ Both PATTERN and CONTENTS are matched as regular expressions."
         (replace-string new-quotes (concat "\\" new-quotes) nil start end)
         (replace-string (concat "\\" old-quotes) old-quotes nil start end)))
     (error "Point isn't in a string")))
-
-;; Select text in quotes
-(defun select-text-in-quotes ()
- (interactive)
- (let (b1 b2)
-   (move-point-backward-out-of-string)
-   (forward-char)
-   (setq b1 (point))
-   (move-point-forward-out-of-string)
-   (backward-char)
-   (setq b2 (point))
-   (set-mark b1)))
 
 (defun linkify-region-from-kill-ring (start end)
   (interactive "r")
@@ -351,12 +353,6 @@ Both PATTERN and CONTENTS are matched as regular expressions."
   (if (region-active-p)
       (kill-ring-save (region-beginning) (region-end))
     (copy-line arg)))
-
-(defun touch-buffer-file ()
-  (interactive)
-  (insert " ")
-  (backward-delete-char 1)
-  (save-buffer))
 
 (defvar magit-status-fullscreen-window-configuration-register
   ?b

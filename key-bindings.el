@@ -1,6 +1,9 @@
 ;; Completion that uses many different methods to find options.
 (global-set-key (kbd "C-.") 'hippie-expand)
 
+;; Expand region (increases selected region by semantic units)
+(global-set-key (kbd "C-@") 'er/expand-region)
+
 ;; Repeat last command - too cumbersome with C-x z
 (global-set-key (kbd "M-z") 'repeat)
 
@@ -12,7 +15,6 @@
 
 ;; Killing text
 (global-set-key (kbd "C-w") 'kill-region-or-backward-word)
-(global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-S-k") 'kill-and-retry-line)
 
 ;; Delete region (don't put it in the kill-ring)
@@ -120,7 +122,7 @@
 
 (global-set-key (kbd "<C-return>") 'new-line-below)
 (global-set-key (kbd "<M-return>") 'new-line-in-between)
-(global-set-key (kbd "C-c d") 'duplicate-line)
+(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 
 ;; Line movement
 (global-set-key (kbd "<C-S-down>") 'move-line-down)
@@ -136,9 +138,6 @@
 ;; Toggle quotes
 (global-set-key (kbd "C-\"") 'toggle-quotes)
 
-;; Mark quote contents
-(global-set-key (kbd "M-\"") 'select-text-in-quotes)
-
 ;; Sorting
 (global-set-key (kbd "M-s l") 'sort-lines)
 
@@ -151,8 +150,10 @@
 ;; Toggle position
 (global-set-key (kbd "C-c C-s") 'toggle-buffer-pos)
 
-;; Touch buffer file
+;; Buffer file functions
 (global-set-key (kbd "C-x t") 'touch-buffer-file)
+(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;; Easy-mode rgrep
 (global-set-key (kbd "M-s s") 'rgrep)
