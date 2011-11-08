@@ -158,6 +158,10 @@
 (require 'expand-region)
 (require 'key-bindings)
 
+;; No dropdowns please, yas
+(setq yas/prompt-functions '(yas/ido-prompt
+                             yas/completing-prompt))
+
 ;; Add parts of each file's directory to the buffer name if not unique
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
