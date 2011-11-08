@@ -157,6 +157,11 @@
 (require 'expand-region)
 (require 'key-bindings)
 
+;; Add parts of each file's directory to the buffer name if not unique
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+;; Run at full power please
 (put 'downcase-region 'disabled nil)
 
 ;; EMMS :)
