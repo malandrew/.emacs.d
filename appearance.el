@@ -52,6 +52,6 @@
 (provide 'appearance)
 
 ;; Subtler highlight in magit
-(set-face-foreground 'magit-item-highlight "#121212")
+(set-face-foreground 'magit-item-highlight "#aaaaaa")
 (set-face-foreground 'magit-diff-none "#666666")
 (set-face-foreground 'magit-diff-add "#00cc33")
