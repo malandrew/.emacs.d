@@ -15,7 +15,6 @@
 
 ;; Killing text
 (global-set-key (kbd "C-w") 'kill-region-or-backward-word)
-(global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-S-k") 'kill-and-retry-line)
 
 ;; Delete region (don't put it in the kill-ring)
@@ -151,8 +150,10 @@
 ;; Toggle position
 (global-set-key (kbd "C-c C-s") 'toggle-buffer-pos)
 
-;; Touch buffer file
+;; Buffer file functions
 (global-set-key (kbd "C-x t") 'touch-buffer-file)
+(global-set-key (kbd "C-x C-r") 'rename-this-buffer-and-file)
+(global-set-key (kbd "C-x C-k") 'delete-this-buffer-and-file)
 
 ;; Easy-mode rgrep
 (global-set-key (kbd "M-s s") 'rgrep)

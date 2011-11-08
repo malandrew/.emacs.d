@@ -143,6 +143,7 @@
 ;; Additional configuration
 (require 'defuns)
 (require 'appearance)
+(require 'file-defuns)
 (require 'smooth-scrolling)
 (require 'autoinsert-templates)
 (require 'git-walk)
