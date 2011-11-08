@@ -134,7 +134,6 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yaml-mode")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/emms/lisp")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/recall-position")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/magit")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/oppdrag-mode")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/buster-mode")
