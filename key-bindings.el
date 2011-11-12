@@ -162,4 +162,7 @@
 (global-set-key (kbd "C-S-e") 'js-expand-object)
 (global-set-key (kbd "C-S-c") 'js-contract-object)
 
+;; Extract JavaScript variables
+(global-set-key (kbd "C-c x") 'js-extract-variable)
+
 (provide 'key-bindings)
