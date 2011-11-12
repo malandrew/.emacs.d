@@ -169,11 +169,13 @@ If there's no region, the current line will be duplicated."
 (defun duplicate-region (num &optional start end)
   "Duplicates the region bounded by START and END NUM times.
 If no START and END is provided, the current region-beginning
-and region-end is used."
+and region-end is used. Moves the active region to the text
+last inserted."
   (interactive "p")
   (let* ((start (or start (region-beginning)))
          (end (or end (region-end)))
          (region (buffer-substring start end)))
+    (kill-ring-save start end)
     (goto-char end)
     (dotimes (i num)
       (insert region))))
