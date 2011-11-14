@@ -121,8 +121,11 @@
      (interactive)
      (jump-to-register magit-status-fullscreen-window-configuration-register)))
 
+;; Clever newlines
 (global-set-key (kbd "<C-return>") 'new-line-below)
 (global-set-key (kbd "<M-return>") 'new-line-in-between)
+
+;; Duplicate region
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 
 ;; Line movement
@@ -154,5 +157,12 @@
 
 ;; Easy-mode rgrep
 (global-set-key (kbd "M-s s") 'rgrep)
+
+;; Expand and contract JavaScript object
+(global-set-key (kbd "C-S-e") 'js-expand-object)
+(global-set-key (kbd "C-S-c") 'js-contract-object)
+
+;; Extract JavaScript variables
+(global-set-key (kbd "C-c x") 'js-extract-variable)
 
 (provide 'key-bindings)

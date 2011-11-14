@@ -141,6 +141,7 @@
 
 ;; Additional configuration
 (require 'defuns)
+(require 'javascript-defuns)
 (require 'file-defuns)
 (require 'smooth-scrolling)
 (require 'autoinsert-templates)
