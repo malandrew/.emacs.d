@@ -156,6 +156,7 @@
 (require 'appearance)
 (require 'inline-string-rectangle)
 (require 'mark-more-like-this)
+(require 'ace-jump-mode)
 
 ;; No dropdowns please, yas
 (setq yas/prompt-functions '(yas/ido-prompt
