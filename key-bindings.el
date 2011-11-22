@@ -173,6 +173,6 @@
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 
 ;; Quickly jump in document with ace-jump-mode
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-ø") 'ace-jump-mode)
 
 (provide 'key-bindings)
