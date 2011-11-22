@@ -22,8 +22,7 @@
   "Comments or uncomments a region and re-indents"
   (interactive)
   (comment-or-uncomment-region (mark) (point))
-  (indent-region (mark) (point))
-  )
+  (indent-region (mark) (point)))
 
 ;; Scratch buffers
 (defun create-scratch-buffer nil
@@ -129,15 +128,13 @@
 ;; Load path
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/showoff-mode")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/rhtml-mode")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/yaml-mode")
+
+; Add external projects to load path
+(dolist (project (directory-files "~/.emacs.d/site-lisp" t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
 (add-to-list 'load-path "~/.emacs.d/site-lisp/emms/lisp")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/recall-position")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/oppdrag-mode")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/buster-mode")
-(add-to-list 'load-path "~/projects/yahtzee.el")
 
 ;; Additional configuration
 (require 'defuns)
@@ -157,6 +154,9 @@
 (require 'expand-region)
 (require 'key-bindings)
 (require 'appearance)
+(require 'inline-string-rectangle)
+(require 'mark-more-like-this)
+(require 'ace-jump-mode)
 
 ;; No dropdowns please, yas
 (setq yas/prompt-functions '(yas/ido-prompt
@@ -202,3 +202,15 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+
+(when window-system
+  (global-set-key (kbd "C-x C-c") 'ask-before-closing))

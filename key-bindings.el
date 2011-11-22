@@ -2,7 +2,7 @@
 (global-set-key (kbd "C-.") 'hippie-expand)
 
 ;; Expand region (increases selected region by semantic units)
-(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "C-'") 'er/expand-region)
 
 ;; Repeat last command - too cumbersome with C-x z
 (global-set-key (kbd "M-z") 'repeat)
@@ -123,6 +123,7 @@
 
 ;; Clever newlines
 (global-set-key (kbd "<C-return>") 'new-line-below)
+(global-set-key (kbd "<C-S-return>") 'new-line-above)
 (global-set-key (kbd "<M-return>") 'new-line-in-between)
 
 ;; Duplicate region
@@ -164,5 +165,14 @@
 
 ;; Extract JavaScript variables
 (global-set-key (kbd "C-c x") 'js-extract-variable)
+
+;; Mark multiple stuff
+(global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)
+(global-set-key (kbd "C-M-m") 'mark-more-like-this)
+
+;; Quickly jump in document with ace-jump-mode
+(define-key global-map (kbd "C-ø") 'ace-jump-mode)
 
 (provide 'key-bindings)

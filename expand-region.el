@@ -38,54 +38,70 @@
 
 ;; Quotes
 
-(defun current-quotes-char ()
+(defun er--current-quotes-char ()
   (nth 3 (syntax-ppss)))
 
-(defalias 'point-is-in-string-p 'current-quotes-char)
+(defalias 'er--point-is-in-string-p 'er--current-quotes-char)
 
-(defun move-point-forward-out-of-string ()
-  (while (point-is-in-string-p) (forward-char)))
+(defun er--move-point-forward-out-of-string ()
+  (while (er--point-is-in-string-p) (forward-char)))
 
-(defun move-point-backward-out-of-string ()
-  (while (point-is-in-string-p) (backward-char)))
+(defun er--move-point-backward-out-of-string ()
+  (while (er--point-is-in-string-p) (backward-char)))
 
 (defun er/mark-inside-quotes ()
  (interactive)
- (when (point-is-in-string-p)
-   (move-point-backward-out-of-string)
+ (when (er--point-is-in-string-p)
+   (er--move-point-backward-out-of-string)
    (forward-char)
    (set-mark (point))
-   (move-point-forward-out-of-string)
+   (er--move-point-forward-out-of-string)
    (backward-char)
    (exchange-point-and-mark)))
 
 (defun er/mark-outside-quotes ()
  (interactive)
- (when (point-is-in-string-p)
-   (move-point-backward-out-of-string)
+ (when (er--point-is-in-string-p)
+   (er--move-point-backward-out-of-string)
    (set-mark (point))
    (forward-char)
-   (move-point-forward-out-of-string)
+   (er--move-point-forward-out-of-string)
    (exchange-point-and-mark)))
 
 ;; Pairs - ie [] () {} etc
 
+(defun er--inside-pairs-p ()
+  (> (car (syntax-ppss)) 0))
+
 (defun er/mark-inside-pairs ()
   (interactive)
-  (when (> (car (syntax-ppss)) 0)
+  (when (er--inside-pairs-p)
       (goto-char (nth 1 (syntax-ppss)))
       (set-mark (1+ (point)))
       (forward-list)
       (backward-char)
       (exchange-point-and-mark)))
 
+(defun er--looking-at-pair ()
+  (looking-at "\\s("))
+
+(defun er--looking-at-marked-pair ()
+  (and (er--looking-at-pair)
+       (eq (mark)
+           (save-excursion
+             (forward-list)
+             (point)))))
+
 (defun er/mark-outside-pairs ()
   (interactive)
-  (when (> (car (syntax-ppss)) 0)
-      (goto-char (nth 1 (syntax-ppss)))
-      (set-mark (point))
-      (forward-list)
-      (exchange-point-and-mark)))
+  (when (and (er--inside-pairs-p)
+             (or (not (er--looking-at-pair))
+                 (er--looking-at-marked-pair)))
+    (goto-char (nth 1 (syntax-ppss))))
+  (when (er--looking-at-pair)
+    (set-mark(point))
+    (forward-list)
+    (exchange-point-and-mark)))
 
 ;; Methods to try expanding to
 
@@ -194,14 +210,3 @@
     (set-mark best-end)))
 
 (provide 'expand-region)
-
-
-;; Todo: Take advantage of this:
-;;
-;; Well, in a nutshell, he makes the inspired assumption that indentation is
-;; almost always a function of brace/paren/curly nesting level, and he uses a
-;; little-known built-in Emacs function called parse-partial-sexp, written in C,
-;; which tells you the current nesting level of not only braces, parens and
-;; curlies, but also of c-style block comments, and whether you're inside a
-;; single- or double-quoted string. How useful! Good thing JavaScript uses
-;; C-like syntax, or that function would have been far less relevant.
