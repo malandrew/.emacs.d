@@ -16,3 +16,6 @@
 [submodule "site-lisp/buster-mode"]
 	path = site-lisp/buster-mode
 	url = git://gitorious.org/buster/buster-mode.git
+[submodule "site-lisp/mark-multiple"]
+	path = site-lisp/mark-multiple
+	url = https://github.com/magnars/mark-multiple.el.git

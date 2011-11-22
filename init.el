@@ -154,6 +154,8 @@
 (require 'expand-region)
 (require 'key-bindings)
 (require 'appearance)
+(require 'inline-string-rectangle)
+(require 'mark-more-like-this)
 
 ;; No dropdowns please, yas
 (setq yas/prompt-functions '(yas/ido-prompt
