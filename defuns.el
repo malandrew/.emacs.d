@@ -142,6 +142,13 @@ Symbols matching the text at point are put first in the completion list."
          (equal (char-syntax (char-before)) ?\")))
   (paredit-mode 1))
 
+(defun new-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (previous-line)
+  (indent-for-tab-command))
+
 (defun new-line-below ()
   (interactive)
   (if (eolp)
