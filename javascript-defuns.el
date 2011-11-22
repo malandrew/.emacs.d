@@ -54,12 +54,14 @@
 
 (defun js-extract-variable (name start end)
   (interactive "MVariable name: \nr")
-  (let ((expression (buffer-substring start end)))
+  (let ((expression (buffer-substring start end))
+        (varpos (make-marker)))
     (delete-region start end)
     (insert name)
+    (set-marker varpos (point))
     (back-to-indentation)
     (insert (concat "var " name " = " expression ";\n"))
-    (goto-char end)))
-
+    (indent-according-to-mode)
+    (goto-char varpos)))
 
 (provide 'javascript-defuns)
