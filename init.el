@@ -152,11 +152,11 @@
 (require 'iy-go-to-char)
 (require 'magit)
 (require 'expand-region)
-(require 'key-bindings)
 (require 'appearance)
 (require 'inline-string-rectangle)
 (require 'mark-more-like-this)
 (require 'ace-jump-mode)
+(require 'key-bindings)
 
 ;; No dropdowns please, yas
 (setq yas/prompt-functions '(yas/ido-prompt
