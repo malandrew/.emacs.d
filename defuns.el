@@ -232,6 +232,12 @@ Both PATTERN and CONTENTS are matched as regular expressions."
     (indent-for-tab-command))
   (yank))
 
+(defun yank-indented ()
+  (interactive)
+  (let ((start (point)))
+    (yank)
+    (indent-region start (point))))
+
 ;; toggle quotes
 
 (defun current-quotes-char ()
