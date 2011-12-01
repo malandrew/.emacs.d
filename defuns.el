@@ -361,11 +361,15 @@ in register specified by the magit-status-register variable."
   (back-to-indentation)
   (kill-line))
 
-(defun replace-next-underscore-with-camel ()
-  (interactive)
-  (search-forward-regexp "_\\sw")
-  (forward-char -2)
-  (delete-char 1)
-  (capitalize-word 1))
+(defun replace-next-underscore-with-camel (arg)
+  (interactive "p")
+  (if (> arg 0)
+      (setq arg (1+ arg))) ; 1-based index to get eternal loop with 0
+  (while (not (= arg 1))
+    (search-forward-regexp "_\\sw")
+    (forward-char -2)
+    (delete-char 1)
+    (capitalize-word 1)
+    (setq arg (1- arg))))
 
 (provide 'defuns)
