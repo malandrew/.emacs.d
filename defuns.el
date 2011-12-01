@@ -361,4 +361,11 @@ in register specified by the magit-status-register variable."
   (back-to-indentation)
   (kill-line))
 
+(defun replace-next-underscore-with-camel ()
+  (interactive)
+  (search-forward-regexp "_\\sw")
+  (forward-char -2)
+  (delete-char 1)
+  (capitalize-word 1))
+
 (provide 'defuns)
