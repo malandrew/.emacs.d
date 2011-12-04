@@ -130,7 +130,11 @@
 
 ;; Line movement
 (global-set-key (kbd "<C-S-down>") 'move-line-down)
+(global-set-key (kbd "C-S-n") 'move-line-down)
 (global-set-key (kbd "<C-S-up>") 'move-line-up)
+(global-set-key (kbd "C-S-p") 'move-line-up)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
 
 ;; Fancy yank
 (global-set-key (kbd "C-S-y") 'yank-indented)
