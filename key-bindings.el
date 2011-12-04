@@ -114,7 +114,6 @@
 
 ;; Git
 (autoload 'magit-status "magit")
-(global-set-key (kbd "<f8>") 'magit-status)
 (global-set-key (kbd "C-x m") 'magit-status-fullscreen)
 (define-key magit-status-mode-map (kbd "q")
   '(lambda ()
