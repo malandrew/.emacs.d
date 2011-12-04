@@ -172,6 +172,7 @@
 
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 ;; EMMS :)
 (require 'emms-setup)
@@ -214,3 +215,4 @@
 
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+

@@ -20,6 +20,9 @@
 ;; Delete region (don't put it in the kill-ring)
 (global-set-key (kbd "C-c C-w") 'delete-region)
 
+;; Camel casing
+(global-set-key (kbd "C-c C-c") 'replace-next-underscore-with-camel)
+
 ;; Use M-w for copy-line if no active region
 (global-set-key (kbd "M-w") 'save-region-or-current-line)
 (global-set-key (kbd "M-W") '(lambda () (interactive) (save-region-or-current-line 1)))
