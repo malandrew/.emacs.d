@@ -178,4 +178,7 @@
 ;; Quickly jump in document with ace-jump-mode
 (define-key global-map (kbd "C-ø") 'ace-jump-mode)
 
+;; Count words
+(define-key global-map (kbd "C-c w") 'wc-region)
+
 (provide 'key-bindings)
